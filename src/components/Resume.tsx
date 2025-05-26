@@ -23,8 +23,10 @@ const Resume: React.FC = () => {
 
         <div className="mt-12 flex flex-col items-center">
           <motion.div
-            className="w-full max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden sm:max-w-2xl" // Reduced max-w, added mx-auto, and sm:max-w
-            initial={{ opacity: 0, y: 30, width: '80%' }} // Reduced initial width
+            // Adjusted max-w for better mobile responsiveness:
+            // Starts narrower on mobile and gets wider on larger screens.
+            className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden"
+            initial={{ opacity: 0, y: 30, width: '90%' }} // Slightly increased initial width for better appearance
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
@@ -41,7 +43,8 @@ const Resume: React.FC = () => {
 
             <iframe
               src={resumeUrl}
-              className="w-full h-[800px]" // Increased the height significantly
+              // Adjusted height for mobile and larger screens
+              className="w-full h-[500px] md:h-[700px]"
               onLoad={handleIframeLoad}
               style={{ display: isLoading ? 'none' : 'block' }}
               title="Resume Preview"

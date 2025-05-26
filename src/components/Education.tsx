@@ -14,64 +14,77 @@ const Education: React.FC = () => {
         <SectionTitle title="Education" />
 
         <div className="relative mt-12">
-          {/* Timeline Line */}
-          <div className="absolute left-1/2 -translate-x-1/2 h-full w-1.5 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></div>
+          {/* Timeline Line: Positioned left on mobile, center on desktop */}
+          <div className="absolute top-0 bottom-0 left-4 w-1 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full
+                          md:left-1/2 md:-translate-x-1/2 md:w-1.5"></div>
 
           {/* Education Items */}
-          <div className="space-y-24">
+          <div className="space-y-16 md:space-y-24">
             {limitedEducation.map((edu, index) => (
-              <div key={edu.id} className={`flex flex-col md:flex-row relative`}>
+              <motion.div
+                key={edu.id}
+                className="relative flex items-start" // Main flex container for dot and content
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                {/* Dot on the timeline */}
+                {/* Mobile: left-4 aligns with the left timeline. Desktop: md:left-1/2 aligns with centered timeline. */}
+                <div className={`absolute top-5 left-4 w-3 h-3 rounded-full bg-purple-500 border-2 border-white z-10
+                                md:top-6 md:left-1/2 md:-translate-x-1/2 md:w-4 md:h-4`}
+                ></div>
+
+                {/* Content Block Wrapper */}
+                {/* Mobile: Takes full width with margin for timeline. Desktop: Alternates sides. */}
                 <div
-                  className={`md:w-1/2 flex pb-8 md:pb-0 relative ${
-                    index % 2 === 0
-                      ? 'md:justify-end md:pr-[4rem] md:order-first'
-                      : 'md:justify-start md:pl-[4rem] md:order-last'
-                  }`}
+                  className={`w-full ml-10 md:ml-0 md:w-[calc(50%-2rem)] pb-8 md:pb-0
+                              ${index % 2 === 0 ? 'md:mr-auto md:text-right' : 'md:ml-auto md:text-left'}`}
                 >
-                  {/* Horizontal Line connecting the education box */}
+                  {/* Horizontal Connector Line (Desktop only) */}
                   <motion.div
-                    className={`absolute top-1/2 -translate-y-1/2 h-1 w-10 bg-purple-500 ${ /* Changed w-12 to w-10 */
-                      index % 2 === 0 ? 'right-0' : 'left-0'
-                    }`}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '4.0rem' }} /* Changed 5rem to 2.5rem */
-                    transition={{ duration: 0.8, delay: index * 0.4, ease: 'easeOut' }}
+                    className="hidden md:block absolute h-0.5 bg-purple-400"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 0.5, delay: 0.1 + index * 0.2, ease: "easeOut" }}
                     viewport={{ once: true }}
+                    style={{
+                      width: 'calc(2rem - 0.5rem)', // Gap (2rem) minus half dot width (0.5rem for md:w-4)
+                      top: 'calc(1.5rem + 0.5rem - 1px)', // md:top-6 (1.5rem) + half dot height (0.5rem) - half line height (1px for h-0.5)
+                      ...(index % 2 === 0
+                        ? { right: 'calc(50% + 0.5rem)', transformOrigin: 'right' } // Connects from right edge of left block
+                        : { left: 'calc(50% + 0.5rem)', transformOrigin: 'left' })  // Connects from left edge of right block
+                    }}
                   ></motion.div>
 
-                  <div
-                    className="w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-                  >
+                  {/* Actual Content Card */}
+                  <div className="w-full bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow text-left"> {/* Ensure text-left for card content */}
                     <div className="p-6">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-4">
-                          <GraduationCap size={24} />
+                      <div className={`flex items-center mb-3 ${index % 2 === 0 ? 'md:flex-row-reverse md:text-right' : 'md:text-left'}`}>
+                        <div className={`w-10 h-10 rounded-full bg-purple-100 flex-shrink-0 flex items-center justify-center text-purple-600 ${index % 2 === 0 ? 'md:ml-3' : 'md:mr-3'}`}>
+                          <GraduationCap size={20} />
                         </div>
-                        <div>
-                          <h3 className="text-xl font-semibold text-gray-800">
+                        <div className="flex-grow">
+                          <h3 className="text-lg font-semibold text-gray-800 leading-tight">
                             {edu.degree}
                           </h3>
-                          <p className="text-gray-600">{edu.field}</p>
+                          <p className="text-sm text-gray-500">{edu.field}</p>
                         </div>
                       </div>
-
-                      <h4 className="text-lg font-medium text-purple-600 mb-2">
+                      <h4 className={`text-md font-medium text-purple-600 mb-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                         {edu.institution}
                       </h4>
-
-                      <div className="flex items-center text-gray-500 mb-4">
-                        <Calendar size={16} className="mr-2" />
+                      <div className={`flex items-center text-xs text-gray-500 mb-3 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
+                        <Calendar size={14} className="mr-1.5" />
                         <span>
                           {edu.startYear} - {edu.endYear}
                         </span>
                       </div>
-
-                      <p className="text-gray-600">{edu.description}</p>
+                      <p className={`text-sm text-gray-600 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>{edu.description}</p>
                     </div>
                   </div>
                 </div>
-                <div className="md:w-1/2 flex justify-center md:justify-start relative"></div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

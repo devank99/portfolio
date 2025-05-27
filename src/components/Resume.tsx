@@ -7,8 +7,8 @@ const Resume: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // **Corrected Resume URL**
-  const resumeUrl = 'https://drive.google.com/file/d/105VsPzl1gsIEkZSxWudNu6O--fVAefLh/view?usp=sharing'; // Changed to /preview for iframe embedding
-  const resumeDownload = 'https://drive.google.com/file/d/105VsPzl1gsIEkZSxWudNu6O--fVAefLh/view?usp=sharing'; // download link
+  const resumeUrl = 'https://drive.google.com/file/d/105VsPzl1gsIEkZSxWudNu6O--fVAefLh/preview'; // Changed to /preview for iframe embedding
+  const resumeDownload = 'https://drive.google.com/file/d/105VsPzl1gsIEkZSxWudNu6O--fVAefLh/preview'; // download link
 
   const handleIframeLoad = () => {
     setIsLoading(false);
@@ -41,8 +41,8 @@ const Resume: React.FC = () => {
 
             <iframe
               src={resumeUrl}
-              // Adjusted height for mobile and larger screens
-              className="w-full h-[500px] md:h-[700px]"
+              // Increased height for better visibility on mobile and larger screens
+              className="w-full h-[600px] sm:h-[700px] md:h-[800px] lg:h-[900px]"
               onLoad={handleIframeLoad}
               style={{ display: isLoading ? 'none' : 'block' }}
               title="Resume Preview"

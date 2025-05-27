@@ -131,7 +131,7 @@ const Projects: React.FC = () => {
                     className="flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
                   >
                     <Github size={20} />
-                    <span>View Code</span>
+                    <span>View </span>
                   </a>
                   
                   {selectedProjectData.demoLink && (
@@ -142,7 +142,7 @@ const Projects: React.FC = () => {
                       className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-indigo-500 text-white rounded-lg hover:from-teal-600 hover:to-indigo-600 transition-colors"
                     >
                       <ExternalLink size={20} />
-                      <span>Live Demo</span>
+                      <span> Demo</span>
                     </a>
                   )}
                 </div>

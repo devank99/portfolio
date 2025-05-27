@@ -7,10 +7,8 @@ const Resume: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // **Corrected Resume URL**
-  const resumeUrl =
-    'https://drive.google.com/file/d/1jM4PFe4XXsHIKts1D13mhekBdBkO9HM4/preview'; // Changed to /preview for iframe embedding
-  const resumeDownload =
-    'https://drive.google.com/file/d/1jM4PFe4XXsHIKts1D13mhekBdBkO9HM4'; // download link
+  const resumeUrl = 'https://drive.google.com/file/d/105VsPzl1gsIEkZSxWudNu6O--fVAefLh/view?usp=sharing'; // Changed to /preview for iframe embedding
+  const resumeDownload = 'https://drive.google.com/file/d/105VsPzl1gsIEkZSxWudNu6O--fVAefLh/view?usp=sharing'; // download link
 
   const handleIframeLoad = () => {
     setIsLoading(false);

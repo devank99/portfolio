@@ -60,7 +60,7 @@ export const projects: Project[] = [
     technologies: ["Tableau", "Excel"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     githubLink: "https://github.com/devank99/Clothing-Store-Sales-Data-Analysis-Tableau-Dashboard-",
-    demoLink: "https://public.tableau.com/app/profile/devank.ingle/viz/Book1_17176071379460/Dashboard1"
+    demoLink: "https://public.tableau.com/app/profile/devank.ingle/viz/ClothingStoreSalesAnalysis/Dashboard1"
   },
   {
     id: 2,

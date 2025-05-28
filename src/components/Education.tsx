@@ -77,7 +77,7 @@ const Education: React.FC = () => {
                       <div className={`flex items-center text-xs text-gray-500 mb-3 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
                         <Calendar size={14} className="mr-1.5" />
                         <span>
-                          {edu.startYear} - {edu.endYear}
+                          {/* {edu.startYear} - */} {edu.endYear} {/* Display only end year */}
                         </span>
                       </div>
                       <p className={`text-sm text-gray-600 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>{edu.description}</p>

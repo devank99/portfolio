@@ -21,7 +21,7 @@ export interface Education {
   institution: string;
   degree: string;
   field: string;
-  startYear: number;
+  startYear?: number; // Made startYear optional
   endYear: number | string;
   description: string;
 }

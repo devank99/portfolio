@@ -7,8 +7,8 @@ const Resume: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // **Corrected Resume URL**
-  const resumeUrl = 'https://drive.google.com/file/d/105VsPzl1gsIEkZSxWudNu6O--fVAefLh/preview'; // Changed to /preview for iframe embedding
-  const resumeDownload = 'https://drive.google.com/file/d/105VsPzl1gsIEkZSxWudNu6O--fVAefLh/preview'; // download link
+  const resumeUrl = 'https://drive.google.com/file/d/1zvQNZEk8BoFjWWYAFk00vnfhlyOkVphD/preview';
+  const resumeDownload = 'https://drive.google.com/file/d/1zvQNZEk8BoFjWWYAFk00vnfhlyOkVphD/preview'; // Direct download link
 
   const handleIframeLoad = () => {
     setIsLoading(false);
@@ -41,8 +41,8 @@ const Resume: React.FC = () => {
 
             <iframe
               src={resumeUrl}
-              // Increased height for better visibility on mobile and larger screens
-              className="w-full h-[600px] sm:h-[700px] md:h-[800px] lg:h-[900px]"
+              // Adjusted height to be responsive using viewport height (vh) units
+              className="w-full h-[70vh] sm:h-[600px] md:h-[750px] lg:h-[800px]"
               onLoad={handleIframeLoad}
               style={{ display: isLoading ? 'none' : 'block' }}
               title="Resume Preview"
@@ -52,7 +52,7 @@ const Resume: React.FC = () => {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
               href={resumeDownload}
-              download="Sarah_Chen_Resume.pdf"
+              download="Devank_Ingle_Resume.pdf" // Corrected download filename
               className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-indigo-500 text-white rounded-lg shadow-md hover:shadow-lg transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

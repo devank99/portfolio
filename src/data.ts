@@ -6,7 +6,7 @@ export const aboutMe = {
   description: "I analyze and interpret data to provide valuable insights.",
   longDescription: "Aspiring data analyst with a passion for turning raw data into insights and clear narratives. I bring strong analytical thinking, technical skills, and a commitment to continuous learning in the evolving field of data analytics. Proficient in tools like Python, SQL, and Tableau, with hands-on experience in real-world projects. Currently seeking a full-time role to grow and contribute in a dynamic team environment.",
   location: "Bhopal,Madhya Pradesh,India",
-  email: "devank.s.ingle@gmail.com",
+  email: "ingleappu79@gmail.com",
   github: "https://github.com/devank99",
   linkedin: "https://linkedin.com/in/devankingle",
   phoneNumber: "+91 9243415366",

@@ -7,8 +7,8 @@ const Resume: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // **Corrected Resume URL**
-  const resumeUrl = 'https://drive.google.com/file/d/1zvQNZEk8BoFjWWYAFk00vnfhlyOkVphD/preview';
-  const resumeDownload = 'https://drive.google.com/file/d/1zvQNZEk8BoFjWWYAFk00vnfhlyOkVphD/preview'; // Direct download link
+  const resumeUrl = 'https://drive.google.com/file/d/1SHxNehh1VtGCwg5qro2c7mn-kPzv3T2z/preview';
+  const resumeDownload = 'https://drive.google.com/file/d/1SHxNehh1VtGCwg5qro2c7mn-kPzv3T2z/preview'; // Direct download link
 
   const handleIframeLoad = () => {
     setIsLoading(false);
